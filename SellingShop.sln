@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81 d17.13
+VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
@@ -65,6 +65,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PaymentService", "PaymentService", "{09D8294F-14C9-436F-BD2C-FA7AC17EC60C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Api", "src\Services\PaymentService\PaymentService.Api\PaymentService.Api.csproj", "{E53C0328-61F6-4EC3-B127-BB7462B8D747}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A3FDDF2D-E8DD-4243-AC3D-560CCD5F9B99}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{4AB95A78-D155-449E-A58F-2082E4CED212}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.UnitTest", "tests\BuildingBlocks\EventBus.UnitTest\EventBus.UnitTest.csproj", "{3E0DFE6B-E1C0-4501-8B55-2D72500D1731}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -132,6 +138,10 @@ Global
 		{E53C0328-61F6-4EC3-B127-BB7462B8D747}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E53C0328-61F6-4EC3-B127-BB7462B8D747}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E53C0328-61F6-4EC3-B127-BB7462B8D747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E0DFE6B-E1C0-4501-8B55-2D72500D1731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E0DFE6B-E1C0-4501-8B55-2D72500D1731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E0DFE6B-E1C0-4501-8B55-2D72500D1731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E0DFE6B-E1C0-4501-8B55-2D72500D1731}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,6 +175,8 @@ Global
 		{EEF3AAFE-FF91-4289-A119-617A70109CCA} = {9035E34D-C352-4ACD-9998-5CBCEE30BC80}
 		{09D8294F-14C9-436F-BD2C-FA7AC17EC60C} = {056D0F2F-D4ED-4FFD-89ED-1DC0E4A82904}
 		{E53C0328-61F6-4EC3-B127-BB7462B8D747} = {09D8294F-14C9-436F-BD2C-FA7AC17EC60C}
+		{4AB95A78-D155-449E-A58F-2082E4CED212} = {A3FDDF2D-E8DD-4243-AC3D-560CCD5F9B99}
+		{3E0DFE6B-E1C0-4501-8B55-2D72500D1731} = {4AB95A78-D155-449E-A58F-2082E4CED212}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DD34AF88-D627-4EC2-97A5-D46640D25AA6}

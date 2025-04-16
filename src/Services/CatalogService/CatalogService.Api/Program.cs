@@ -28,7 +28,8 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.Configure<CatalogSettings>(builder.Configuration.GetSection(nameof(CatalogSettings)));
 builder.Services.ConfigureDbContext(builder.Configuration);
-// builder.Services.ConfigureConsul(...);
+
+//builder.Services.ConfigureConsul(builder.Configuration);
 
 var app = builder.Build();
 
@@ -57,5 +58,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
+//var lifetime = app.Services.GetRequiredService<IHostApplicationLifetime>();
+//app.RegisterWithConsul(lifetime);
 
 app.Run();

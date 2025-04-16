@@ -30,7 +30,7 @@ namespace PaymentService.Api.IntegrationEvents.EventHandlers
                 ? new OrderPaymentSuccessIntegrationEvent(@event.OrderId)
                 : new OrderPaymentFailedIntegrationEvent(@event.OrderId, $"Order payment failed with OrderId:{@event.OrderId}");
 
-            _logger.LogInformation($"OrderCreatedIntegrationEventHandler in PaymentService is started with PaymentSuccess: {paymentSuccessFlag}, orderId: {@event.OrderId}");
+            _logger.LogInformation($"OrderCreatedIntegrationEventHandler in PaymentService is fired with PaymentSuccess: {paymentSuccessFlag}, orderId: {@event.OrderId}");
 
             _eventBus.Publish(paymentEvent);
 

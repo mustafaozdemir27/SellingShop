@@ -11,7 +11,7 @@ namespace CatalogService.Api.Extensions
             services.AddSingleton<IConsulClient, ConsulClient>(c => new ConsulClient(consulConfig =>
             {
                 var address = configuration["ConsulConfig:Address"];
-                consulConfig.Address = new Uri(address);
+                consulConfig.Address = new Uri("http://localhost:8500");
             }));
 
             return services;

@@ -1,24 +1,23 @@
 using IdentityService.Api.Application.Services;
-using Microsoft.OpenApi.Models;
+using IdentityService.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddScoped<IIdentityManagementService, IdentityManagementService>();
 
-builder.Services.AddControllers();
+builder.Services.ConfigureConsul(builder.Configuration);
 
-// OpenAPI (Swagger) configuration
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
+// Configure Kestrel to listen on all IP addresses
+builder.WebHost.ConfigureKestrel(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "Identity Service API",
-        Version = "v1"
-    });
+    options.ListenAnyIP(5005);
 });
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -26,18 +25,15 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Identity Service API V1");
-    });
+    app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 app.MapControllers();
+
+var lifetime = app.Services.GetRequiredService<IHostApplicationLifetime>();
+app.RegisterWithConsul(lifetime);
 
 app.Run();

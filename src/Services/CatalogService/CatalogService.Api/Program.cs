@@ -29,7 +29,7 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.Configure<CatalogSettings>(builder.Configuration.GetSection(nameof(CatalogSettings)));
 builder.Services.ConfigureDbContext(builder.Configuration);
 
-//builder.Services.ConfigureConsul(builder.Configuration);
+builder.Services.ConfigureConsul(builder.Configuration);
 
 var app = builder.Build();
 
@@ -54,11 +54,10 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-//var lifetime = app.Services.GetRequiredService<IHostApplicationLifetime>();
-//app.RegisterWithConsul(lifetime);
+var lifetime = app.Services.GetRequiredService<IHostApplicationLifetime>();
+app.RegisterWithConsul(lifetime);
 
 app.Run();

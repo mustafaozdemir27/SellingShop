@@ -1,0 +1,70 @@
+{
+  "Routes": [
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "CatalogService",
+      "DownstreamPathTemplate": "/api/v1/catalog/{anything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/catalog/{anything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+      "UpstreamScheme": "http"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "IdentityService",
+      "DownstreamPathTemplate": "/api/auth/login",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/auth/login",
+      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "BasketService",
+      "DownstreamPathTemplate": "/api/v1/basket/{anything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/basket/{anything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
+      "UpstreamScheme": "http"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "OrderService",
+      "DownstreamPathTemplate": "/api/v1/order/{anything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/order/{anything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+      "UpstreamScheme": "http"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "PaymentService",
+      "DownstreamPathTemplate": "/api/v1/payment/{anything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/payment/{anything}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamScheme": "http"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000",
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "Type": "Consul",
+      "Token": null,
+      "ConfigurationKey": null,
+      "PollingInterval": 100
+    },
+    "RequestIdKey": "OcRequestId",
+    "DownstreamScheme": "http",
+    "HttpHandlerOptions": {
+      "AllowAutoRedirect": true,
+      "UseCookieContainer": true,
+      "UseTracing": true
+    }
+  }
+}

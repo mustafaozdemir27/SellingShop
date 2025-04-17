@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  s_consul:
+    container_name: c_consul
+    image: hashicorp/consul:1.15.0  # En yeni versiyon
+    ports:
+      - "8500:8500"  # Consul UI
+      - "8600:8600/tcp"  # Consul DNS TCP
+      - "8600:8600/udp"  # Consul DNS UDP
+    volumes:
+      - consul_data:/consul/data  # Consul verileri için kalıcı depolama
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0  # İlgili ağ arayüzünü bağla
+    command: ["consul", "agent", "-dev", "-client=0.0.0.0", "-config-dir=/consul/config"]  # Consul'ı başlat
+    restart: unless-stopped  # Eğer bir hata olursa konteyneri yeniden başlat
+
+volumes:
+  consul_data:
+    driver: local  # Docker volume kullanarak veriyi kalıcı tutuyoruz

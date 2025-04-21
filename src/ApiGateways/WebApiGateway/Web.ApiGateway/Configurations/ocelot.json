@@ -28,7 +28,10 @@
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/basket/{anything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
     },
     {
       "UseServiceDiscovery": true,

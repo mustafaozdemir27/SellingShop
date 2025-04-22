@@ -2,12 +2,11 @@ using BasketService.Api.Core.Application.Repository;
 using BasketService.Api.Core.Application.Services;
 using BasketService.Api.Extensions;
 using BasketService.Api.Infrastructure.Repository;
-using EventBus.Base.Abstraction;
-using EventBus.Base;
-using EventBus.Factory;
 using BasketService.Api.IntegrationEvents.EventHandlers;
 using BasketService.Api.IntegrationEvents.Events;
-using Microsoft.IdentityModel.Logging;
+using EventBus.Base;
+using EventBus.Base.Abstraction;
+using EventBus.Factory;
 
 var builder = WebApplication.CreateBuilder(args);
 

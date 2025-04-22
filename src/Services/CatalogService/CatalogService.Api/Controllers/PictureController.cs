@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using CatalogService.Api.Infrastructure.Context;
+﻿using CatalogService.Api.Infrastructure.Context;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 namespace CatalogService.Api.Controllers

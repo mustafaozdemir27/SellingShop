@@ -1,10 +1,10 @@
-﻿using EventBus.UnitTest.Events.EventHandlers;
+﻿using EventBus.Base;
+using EventBus.Base.Abstraction;
+using EventBus.Factory;
+using EventBus.UnitTest.Events.EventHandlers;
 using EventBus.UnitTest.Events.Events;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using EventBus.Factory;
-using EventBus.Base.Abstraction;
-using EventBus.Base;
 
 namespace EventBus.UnitTest
 {
@@ -49,7 +49,7 @@ namespace EventBus.UnitTest
         //    eventBus.Subscribe<OrderCreatedIntegrationEvent, OrderCreatedIntegrationEventHandler>();
 
         ////    eventBus.UnSubscribe<OrderCreatedIntegrationEvent, OrderCreatedIntegrationEventHandler>();
-        
+
         // Task.Delay(2000).Wait();
         //}
 

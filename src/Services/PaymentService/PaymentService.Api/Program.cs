@@ -1,5 +1,5 @@
-using EventBus.Base.Abstraction;
 using EventBus.Base;
+using EventBus.Base.Abstraction;
 using EventBus.Factory;
 using Microsoft.OpenApi.Models;
 using PaymentService.Api.IntegrationEvents.EventHandlers;

@@ -51,7 +51,7 @@ public static class ConsulRegistration
             Name = "IdentityService",
             Address = ip,
             Port = uri.Port,
-            Tags = new[] { "IdentityService"},
+            Tags = new[] { "IdentityService" },
             Check = new AgentServiceCheck()
             {
                 HTTP = $"{uri.Scheme}://{ip}:{uri.Port}/health",

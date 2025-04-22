@@ -72,6 +72,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.UnitTest", "tests\BuildingBlocks\EventBus.UnitTest\EventBus.UnitTest.csproj", "{3E0DFE6B-E1C0-4501-8B55-2D72500D1731}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-compose-files", "docker-compose-files", "{E4F6BCEC-8992-452C-8F6E-84BEBF1832FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consul", "consul", "{E8DA49CC-27C5-41F0-AA85-1983D6664AD1}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\consul\docker-compose.yml = docker-compose-files\consul\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rabbitmq", "rabbitmq", "{F56E1F76-A475-4C62-B703-EBBE013E90F4}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\rabbitmq\docker-compose.yml = docker-compose-files\rabbitmq\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "redis", "redis", "{4986ADC5-8255-4A9E-835F-C1A2E6C70F29}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\redis\docker-compose.yml = docker-compose-files\redis\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sqlserver", "sqlserver", "{FFF500E5-0691-4F02-8867-D3097FEEB451}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\sqlserver\docker-compose.yml = docker-compose-files\sqlserver\docker-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,6 +199,10 @@ Global
 		{E53C0328-61F6-4EC3-B127-BB7462B8D747} = {09D8294F-14C9-436F-BD2C-FA7AC17EC60C}
 		{4AB95A78-D155-449E-A58F-2082E4CED212} = {A3FDDF2D-E8DD-4243-AC3D-560CCD5F9B99}
 		{3E0DFE6B-E1C0-4501-8B55-2D72500D1731} = {4AB95A78-D155-449E-A58F-2082E4CED212}
+		{E8DA49CC-27C5-41F0-AA85-1983D6664AD1} = {E4F6BCEC-8992-452C-8F6E-84BEBF1832FC}
+		{F56E1F76-A475-4C62-B703-EBBE013E90F4} = {E4F6BCEC-8992-452C-8F6E-84BEBF1832FC}
+		{4986ADC5-8255-4A9E-835F-C1A2E6C70F29} = {E4F6BCEC-8992-452C-8F6E-84BEBF1832FC}
+		{FFF500E5-0691-4F02-8867-D3097FEEB451} = {E4F6BCEC-8992-452C-8F6E-84BEBF1832FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DD34AF88-D627-4EC2-97A5-D46640D25AA6}

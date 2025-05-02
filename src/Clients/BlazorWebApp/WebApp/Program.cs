@@ -1,9 +1,23 @@
 using WebApp.Components;
+using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
+using WebApp.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
+
+builder.Services.AddBlazoredLocalStorage();
+
+
+
+
+
+
+builder.Services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
+
+
 
 var app = builder.Build();
 

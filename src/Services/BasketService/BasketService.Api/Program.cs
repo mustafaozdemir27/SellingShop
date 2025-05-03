@@ -7,11 +7,38 @@ using BasketService.Api.IntegrationEvents.Events;
 using EventBus.Base;
 using EventBus.Base.Abstraction;
 using EventBus.Factory;
+using Serilog;
 
+string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production";
+
+// Configuration Builder for Serilog and appsettings
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("Configurations/appsettings.json", optional: false)
+    .AddJsonFile($"Configurations/appsettings.{env}.json", optional: true)
+    .AddEnvironmentVariables()
+    .Build();
+
+var serilogConfiguration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("Configurations/serilog.json", optional: false)
+    .AddJsonFile($"Configurations/serilog.{env}.json", optional: true)
+    .AddEnvironmentVariables()
+    .Build();
+
+// Serilog setup
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(serilogConfiguration)
+    .CreateLogger();
+
+// WebApplicationBuilder
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Host.UseSerilog(); // Serilog'u logging provider olarak ayarla
+
+builder.Configuration.AddConfiguration(configuration);
+
+// Services
 builder.Services.ConfigureConsul(builder.Configuration);
 builder.Services.ConfigureAuth(builder.Configuration);
 builder.Services.AddSingleton(sp => sp.ConfigureRedis(builder.Configuration));
@@ -33,12 +60,12 @@ builder.Services.AddSingleton<IEventBus>(sp =>
     return EventBusFactory.Create(config, sp);
 });
 
+builder.Services.AddTransient<OrderCreatedIntegrationEventHandler>();
+
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(5003);
 });
-
-builder.Services.AddTransient<OrderCreatedIntegrationEventHandler>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -46,15 +73,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
-
+// app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
